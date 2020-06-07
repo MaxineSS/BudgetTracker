@@ -5,11 +5,14 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:local="clr-namespace:BudgetTracker.ViewModels"
              mc:Ignorable="d"
              x:Class="BudgetTracker.Views.NewExpenseEntryPage"
-             Title="Enter New Expense">
+             Title="Enter New Expense" >
+    
     <ContentPage.BindingContext>
         <local:ExpenseViewModel/>
     </ContentPage.BindingContext>
     
+    
+
     <ScrollView VerticalScrollBarVisibility="Never">
 
         <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand">
@@ -34,24 +37,28 @@
             <Frame Margin="20,0,20,5" BorderColor="#B2B2B2" Padding="0" CornerRadius="10">
                 <Grid RowSpacing="0" ColumnSpacing="0">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="500"/>
                         <ColumnDefinition Width="0"/>
                     </Grid.ColumnDefinitions>
-                    <Image Source="icon_calendar.png" HeightRequest="35" WidthRequest="35"
-                       VerticalOptions="Center" HorizontalOptions="Center" Opacity="0.5"/>
+                    <StackLayout Orientation="Horizontal">
+                        <Image Source="icon_calendar.png" HeightRequest="35" WidthRequest="35" Margin="8,0,0,0"
+                            VerticalOptions="Center" HorizontalOptions="Start"  Opacity="0.5"/>
                     <Label x:Name="Datelable"
-                           Text="{Binding Date, Source={x:Reference date_entry}}" Opacity="0.5" 
-                           BackgroundColor="Transparent" Grid.Column="2" FontSize="20" TextColor="#051855"
-                           VerticalOptions="Center" Margin="-15,10,10,10"/>
-                    <DatePicker  MinimumDate="01/01/2020"
+                           Text="{Binding Date, Source={x:Reference DatePicker}}" 
+                           Opacity="0.5" 
+                           BackgroundColor="Transparent" Grid.Column="2" FontSize="20" 
+                           TextColor="#051855"
+                           VerticalOptions="Center" HorizontalOptions="Center" Margin="-1,10,10,10"/>
+                    <DatePicker  MinimumDate="01/01/2020" 
                                  MaximumDate="12/31/2022"
-                                 x:Name="date_entry" 
+                                 x:Name="DatePicker" 
+                                 DateSelected="OnDateEntrySelected"
                                  IsEnabled="True"
                                  HorizontalOptions="Fill"
-                                 Grid.Row="1" Grid.Column="1" 
                                  TextColor="#747B9B" FontSize="16"
-                                 VerticalOptions="Start" Margin="0,5,0,5">
+                                 VerticalOptions="Center" Margin="-5,5,0,5">
                     </DatePicker>
+                    </StackLayout>
                 </Grid>
             </Frame>
 
@@ -60,14 +67,27 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="50"/>
                         <ColumnDefinition Width="0"/>
+                        <ColumnDefinition Width="100"/>
                     </Grid.ColumnDefinitions>
-                    <Image Source="icon_category.png" HeightRequest="35" WidthRequest="35"
+                    <Image Source="icon_category.png" HeightRequest="35" WidthRequest="35" Margin="8,0,0,0"
                            VerticalOptions="Center" HorizontalOptions="Center" Opacity="0.5"/>
-                    <Entry  x:Name="category_entry"
-                            Text="{Binding Category}" Placeholder="Category" Opacity="0.5"  BackgroundColor="Transparent" Grid.Column="2" FontSize="20" TextColor="#051855"
+                    <Label  x:Name="category_entry"
+                            Text="{Binding Category, Source={Reference CategoryPicker}}" Opacity="0.5"  
+                            BackgroundColor="Transparent" Grid.Column="2" FontSize="20" 
+                            TextColor="#051855"
                             VerticalOptions="Center" Margin="-15,10,10,10"/>
-                    <Picker ItemsSource="{Binding ExpenseCategory}" IsEnabled="True" IsVisible="True"/>
-
+                    <Picker x:Name="CategoryPicker" VerticalOptions="Center" Title="Category" FontSize="16" HorizontalOptions="Fill" 
+                            IsEnabled="True" IsVisible="True" Grid.Column="2">
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>Food</x:String>
+                                <x:String>Transportation</x:String>
+                                <x:String>Household</x:String>
+                                <x:String>Health</x:String>
+                                <x:String>Education</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>
+                    </Picker>
                 </Grid>
             </Frame>
             <Frame Margin="20,0,20,5" BorderColor="#B2B2B2" Padding="0" CornerRadius="10">
@@ -86,9 +106,10 @@
             </Frame>
 
             <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Margin="0,30,0,0">
-                <!--<Button Text="Save" Clicked="SaveButtonClicked" WidthRequest="150" TextColor="White" BackgroundColor="#432371" CornerRadius="20"/>-->
-                <Button Text="Cancel" Clicked="CancelButton_Clicked"  WidthRequest="150" TextColor="White" BackgroundColor="#432371" CornerRadius="20"/>
+                <Button Text="Save" Clicked="SaveButtonClicked" WidthRequest="150" TextColor="White" BackgroundColor="#432371" CornerRadius="20"/>
+                <Button Text="Cancel" Clicked="CancelButtonClicked"  WidthRequest="150" TextColor="White" BackgroundColor="#432371" CornerRadius="20"/>
             </StackLayout>
         </StackLayout>
-    </ScrollView>
+        </ScrollView>
+
 </ContentPage>

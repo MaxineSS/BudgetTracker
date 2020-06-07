@@ -39,7 +39,7 @@ namespace BudgetTracker.ViewModels
             }
         }
 
-        ExpenseCategory category;
+        public ExpenseCategory category;
         public ExpenseCategory Category
         {
             get => category;

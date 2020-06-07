@@ -4,6 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
+             Title="Setting Budget"
              x:Class="BudgetTracker.Views.BudgetSettingPage">
     <ContentPage.Content>
         <StackLayout Margin="30,0,30,0">
