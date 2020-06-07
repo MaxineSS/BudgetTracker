@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="BudgetTracker.Views.BudgetSettingPage">
+    <ContentPage.Content>
+        <StackLayout Margin="30,0,30,0">
+            <Grid RowSpacing="0" VerticalOptions="CenterAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" Margin="0,0,0,50" HorizontalOptions="Center"
+                Text="Budget Tracker" FontSize="Header" />
+
+                <Label Grid.Row="1" HorizontalOptions="Center"
+                Text="Set your Monthly Budget here" FontSize="Large"/>
+                <Entry Grid.Row="2" Placeholder="$$$$$" PlaceholderColor="#B2B2B2" HorizontalOptions="Center"
+                       WidthRequest="200"/>
+
+
+                <Button Grid.Row="3" 
+                    Text="Save" Clicked="Button_Clicked" WidthRequest="50"
+                    TextColor="White" BackgroundColor="#432371" CornerRadius="20"/>
+            </Grid>
+        </StackLayout>
+
+    </ContentPage.Content>
+</ContentPage>
